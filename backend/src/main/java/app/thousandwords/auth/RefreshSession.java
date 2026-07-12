@@ -1,0 +1,3 @@
+package app.thousandwords.auth;
+import app.thousandwords.user.User; import jakarta.persistence.*; import java.time.Instant; import java.util.UUID;
+@Entity @Table(name="refresh_session") public class RefreshSession { @Id public UUID id; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="user_id") public User user; @Column(name="token_hash") public String tokenHash; @Column(name="expires_at") public Instant expiresAt; @Column(name="revoked_at") public Instant revokedAt; protected RefreshSession(){} public RefreshSession(User u,String h,Instant e){id=UUID.randomUUID();user=u;tokenHash=h;expiresAt=e;} }

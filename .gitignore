@@ -1,0 +1,11 @@
+node_modules/
+.expo/
+dist/
+build/
+target/
+.env
+.DS_Store
+.idea/
+.vscode/
+*.iml
+coverage/

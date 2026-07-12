@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Thousand Words",
+    "slug": "thousand-words",
+    "scheme": "thousandwords",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.thousandwords.mobile",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Photograph packages to identify and add grocery items.",
+        "NSPhotoLibraryUsageDescription": "Choose package photos to identify grocery items."
+      }
+    },
+    "android": { "package": "app.thousandwords.mobile" },
+    "plugins": ["expo-router", "expo-camera", "expo-image-picker", "expo-secure-store"]
+  }
+}

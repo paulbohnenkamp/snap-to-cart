@@ -1,0 +1,1 @@
+package app.thousandwords.auth; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface RefreshSessionRepository extends JpaRepository<RefreshSession,UUID>{Optional<RefreshSession> findByTokenHashAndRevokedAtIsNull(String hash);}

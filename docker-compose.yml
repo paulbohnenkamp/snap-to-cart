@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-thousandwords}
+      POSTGRES_USER: ${POSTGRES_USER:-thousandwords}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-thousandwords}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-thousandwords}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-thousandwords}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-thousandwords}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-thousandwords}
+      JWT_SECRET: ${JWT_SECRET:-development-secret-change-me-please-123456}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-mini}
+      KROGER_CLIENT_ID: ${KROGER_CLIENT_ID:-}
+      KROGER_CLIENT_SECRET: ${KROGER_CLIENT_SECRET:-}
+      KROGER_REDIRECT_URI: ${KROGER_REDIRECT_URI:-thousandwords://oauth/kroger}
+      APP_DEMO_MODE: ${APP_DEMO_MODE:-true}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
