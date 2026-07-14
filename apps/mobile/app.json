@@ -1,20 +1,20 @@
 {
   "expo": {
-    "name": "Thousand Words",
-    "slug": "thousand-words",
-    "scheme": "thousandwords",
+    "name": "Snap to Cart",
+    "slug": "snap-to-cart",
+    "scheme": "snaptocart",
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "app.thousandwords.mobile",
+      "bundleIdentifier": "app.snaptocart.mobile",
       "infoPlist": {
         "NSCameraUsageDescription": "Photograph packages to identify and add grocery items.",
         "NSPhotoLibraryUsageDescription": "Choose package photos to identify grocery items."
       }
     },
-    "android": { "package": "app.thousandwords.mobile" },
+    "android": { "package": "app.snaptocart.mobile" },
     "plugins": ["expo-router", "expo-camera", "expo-image-picker", "expo-secure-store"]
   }
 }

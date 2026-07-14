@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/thousandwords}
-    username: ${SPRING_DATASOURCE_USERNAME:thousandwords}
-    password: ${SPRING_DATASOURCE_PASSWORD:thousandwords}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/snaptocart}
+    username: ${SPRING_DATASOURCE_USERNAME:snaptocart}
+    password: ${SPRING_DATASOURCE_PASSWORD:snaptocart}
   jpa:
     open-in-view: false
     hibernate:
@@ -20,4 +20,4 @@ app:
   openai-model: ${OPENAI_MODEL:gpt-4.1-mini}
   kroger-client-id: ${KROGER_CLIENT_ID:}
   kroger-client-secret: ${KROGER_CLIENT_SECRET:}
-  kroger-redirect-uri: ${KROGER_REDIRECT_URI:thousandwords://oauth/kroger}
+  kroger-redirect-uri: ${KROGER_REDIRECT_URI:snaptocart://oauth/kroger}

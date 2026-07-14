@@ -1,0 +1,3 @@
+package app.snaptocart.scan;
+import jakarta.persistence.*; import java.math.BigDecimal; import java.util.UUID;
+@Entity @Table(name="recognized_product") public class RecognizedProduct { @Id public UUID id; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="scan_id") public GroceryScan scan; public String brand; public String name; public String variant; public String size; public double confidence; public String upc; public BigDecimal price; protected RecognizedProduct(){} public RecognizedProduct(GroceryScan s,VisionProduct p){id=UUID.randomUUID();scan=s;brand=p.brand();name=p.name();variant=p.variant();size=p.size();confidence=p.confidence();upc=p.upc();price=p.price();} }

@@ -1,3 +1,0 @@
-package app.thousandwords.scan;
-import app.thousandwords.user.User; import jakarta.persistence.*; import java.time.Instant; import java.util.*;
-@Entity @Table(name="grocery_scan") public class GroceryScan { @Id public UUID id; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="user_id") public User user; public String summary; @Column(name="demo_mode") public boolean demoMode; @Column(name="created_at") public Instant createdAt; @OneToMany(mappedBy="scan",cascade=CascadeType.ALL,orphanRemoval=true) public List<RecognizedProduct> products=new ArrayList<>(); protected GroceryScan(){} public GroceryScan(User u,boolean d){id=UUID.randomUUID();user=u;demoMode=d;createdAt=Instant.now();} }

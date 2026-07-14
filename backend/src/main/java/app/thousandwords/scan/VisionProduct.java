@@ -1,1 +1,0 @@
-package app.thousandwords.scan; import java.math.BigDecimal; public record VisionProduct(String brand,String name,String variant,String size,double confidence,String upc,BigDecimal price){}
