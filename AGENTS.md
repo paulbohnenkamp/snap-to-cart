@@ -2,7 +2,7 @@
 
 ## Product intent
 
-Thousand Words turns package photos into useful actions. The first production skill is grocery replenishment through King Soopers/Kroger.
+Snap to Cart turns package photos into useful actions. The first production skill is grocery replenishment through King Soopers/Kroger.
 
 ## Engineering rules
 

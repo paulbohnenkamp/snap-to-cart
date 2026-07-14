@@ -1,0 +1,1 @@
+package app.snaptocart.scan; import java.util.List; public interface VisionProvider { List<VisionProduct> recognize(byte[] image,String mediaType); boolean demoMode(); }

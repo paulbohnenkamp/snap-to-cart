@@ -10,7 +10,7 @@ Busy grocery shoppers using a phone at home, often while holding an empty packag
 
 ## Product Purpose
 
-Thousand Words makes replenishing a known grocery item faster than searching for it manually. The MVP succeeds when a contributor can run the complete demo locally, recognize a package, review what was found, and receive an honest cart-action result.
+Snap to Cart makes replenishing a known grocery item faster than searching for it manually. The MVP succeeds when a contributor can run the complete demo locally, recognize a package, review what was found, and receive an honest cart-action result.
 
 ## Brand Personality
 

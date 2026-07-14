@@ -1,3 +1,0 @@
-package app.thousandwords.kroger;
-import jakarta.validation.Valid; import jakarta.validation.constraints.*; import org.springframework.web.bind.annotation.*; import java.util.Map;
-@RestController @RequestMapping("/api/kroger") public class KrogerController { private final KrogerService service; public KrogerController(KrogerService s){service=s;} @GetMapping("/connect") Map<String,String> connect(){return service.connectUrl();} @PostMapping("/cart/items") Map<String,Object> add(@Valid @RequestBody AddItem x){return service.add(x.upc(),x.quantity());} public record AddItem(@NotBlank String upc,@Min(1) @Max(20) int quantity){} }

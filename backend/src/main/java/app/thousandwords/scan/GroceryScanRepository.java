@@ -1,1 +1,0 @@
-package app.thousandwords.scan; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface GroceryScanRepository extends JpaRepository<GroceryScan,UUID>{List<GroceryScan> findByUserIdOrderByCreatedAtDesc(UUID userId);}

@@ -39,6 +39,6 @@
 - Voice commands such as “add two of these”
 - Home-screen widgets and Siri/App Intents
 
-## Thousand Words platform
+## Snap to Cart platform
 
 Future photo-to-action skills may include receipts, warranties, home inventory, contacts, repair parts, and nutrition. Grocery remains an isolated skill so platform expansion does not complicate the first release.

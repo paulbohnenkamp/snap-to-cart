@@ -1,4 +1,4 @@
-# Thousand Words
+# Snap to Cart
 
 A mobile-first grocery assistant: photograph an empty package, identify the product, match it against Kroger/King Soopers, and add it to the shopper's cart.
 
