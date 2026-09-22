@@ -1,28 +1,48 @@
 # Snap to Cart
 
-A mobile-first grocery assistant: photograph an empty package, identify the product, match it against Kroger/King Soopers, and add it to the shopper's cart.
+Snap to Cart is a mobile-first grocery assistant that turns a package photo into
+a recognized product and a simulated cart action.
 
-## Stack
+## What it demonstrates
 
-- **Mobile:** React Native + Expo Router + TypeScript
-- **Backend:** Java 21 + Spring Boot 3.5 + Spring Security + JWT
-- **Database:** PostgreSQL + Flyway
-- **AI:** OpenAI Responses API with image input and structured product extraction
-- **Retail:** Kroger OAuth, Locations, Products, and Cart APIs
-- **Infrastructure:** Docker Compose and GitHub Actions
+- Sign-in and protected mobile workflows.
+- Image-based product recognition with deterministic demo mode.
+- Structured product extraction, catalog matching, and an explicit review step.
+- A simulated cart flow that does not mutate a real retailer cart.
+- Server-side credentials, short-lived JWTs, refresh-token rotation, and
+  integration boundaries for Kroger and OpenAI.
+
+## AI interaction flow
+
+1. A user signs in and submits a package photo.
+2. Demo mode or the optional OpenAI path extracts a candidate product.
+3. The user reviews the result before the app matches it to a retailer catalog.
+4. The app returns a simulated cart action; live retailer mutation is not part
+   of the demo flow.
+
+This demonstrates image understanding, structured extraction, human review,
+provider isolation, and safe integration boundaries around external APIs.
+
+## Technology used
+
+- **React Native / Expo Router** — provide the mobile scan-and-review UI.
+- **TypeScript** — manage client state, navigation, and API boundaries.
+- **Java 21 / Spring Boot / Spring Security** — own backend workflows and auth.
+- **JWT / PostgreSQL / Flyway** — implement sessions and durable domain state.
+- **OpenAI Responses API** — provides optional image understanding.
+- **Kroger APIs** — support optional catalog and retailer integration.
+- **Docker Compose / GitHub Actions** — support local services and CI.
 
 ## Quick start
 
-### 1. Start PostgreSQL and the backend
+Start PostgreSQL and the backend:
 
 ```bash
 cp .env.example .env
 docker compose up --build
 ```
 
-The API runs at `http://localhost:8080`.
-
-### 2. Start the Expo app
+Then start the Expo app:
 
 ```bash
 cd apps/mobile
@@ -31,54 +51,12 @@ cp .env.example .env
 npm run start
 ```
 
-Use the iOS simulator, Android emulator, Expo Go, or `npm run web`.
+Demo mode works without OpenAI or Kroger credentials and keeps recognition and
+cart actions deterministic.
 
-## Demo account
+## Further reading
 
-Create an account in the app after starting the backend. Demo mode does not require OpenAI or Kroger credentials and uses deterministic recognition.
-
-The demo cart action is explicitly simulated and does not change an external Kroger cart.
-
-## Main flow
-
-1. Sign in or create an account.
-2. Take or select a package photo.
-3. In demo mode, the backend returns a deterministic sample product.
-4. Review and select the recognized product.
-5. Simulate adding the selected UPC and receive an explicit demo result.
-
-Live OpenAI recognition can be enabled for development, but production Kroger OAuth, catalog matching, and cart mutation remain release-candidate work.
-
-## Environment
-
-See `.env.example`, `apps/mobile/.env.example`, and `backend/src/main/resources/application.yml`.
-
-The application runs without OpenAI or Kroger credentials in **demo mode**. Demo recognition and simulated cart actions are deterministic and clearly labeled in the UI.
-
-## Repository layout
-
-```text
-apps/mobile              Expo application
-backend                  Spring Boot API
-.github/workflows        CI pipelines
-docs                     Architecture and integration notes
-```
-
-## Tests
-
-```bash
-cd apps/mobile && npm test
-cd backend && mvn test
-```
-
-## Security notes
-
-- Passwords are BCrypt hashed.
-- Access tokens are short-lived JWTs.
-- Refresh tokens are rotated, revocable, and stored as SHA-256 hashes.
-- API keys remain server-side.
-- Image uploads are size/type limited and are not retained by default.
-
-## Current MVP boundaries
-
-The GitHub MVP is a complete local demo, not a production retail integration. Production release work still includes Kroger OAuth callback handling, token encryption, store and catalog matching, real cart mutation, Kroger application approval, privacy disclosures, App Store assets, observability, and cloud deployment.
+- [Architecture](docs/ARCHITECTURE.md)
+- [Mobile application package](apps/mobile/package.json)
+- [Backend build](backend/pom.xml)
+- [Contributor guidance](AGENTS.md)
